@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ansh!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            background-color: #ffffff; /* Background set to white */
+            overflow-x: hidden;
+        }
+        .page {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 100vh;
+            padding: 0 20px;
+            box-sizing: border-box;
+            background-color: #ffffff; /* Background set to white */
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .birthday-text {
+            font-size: 3rem; /* Increased size */
+            font-weight: bold;
+            text-align: center;
+            color: black;
+            z-index: 2;
+            margin-top: 30px;
+            max-width: 90%;
+            box-sizing: border-box;
+        }
+        .circle-button {
+            margin-top: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 1rem; /* Further reduced size */
+            border: none;
+            padding: 10px; /* Reduced padding */
+            border-radius: 50%;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+            width: 100px; /* Reduced size */
+            height: 100px; /* Reduced size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .birthday-animation {
+            width: 60%; /* Slightly increased size */
+            max-width: 350px; /* Increased maximum width */
+            margin-top: 30px; /* Positioned below the birthday text */
+        }
+
+        .next-page {
+            display: none;
+        }
+
+        .birthday-text-second-page {
+            font-size: 1.5rem; /* Reduced size for second page text */
+            line-height: 1.6;
+            text-align: center;
+            color: black;
+            z-index: 2;
+            margin-top: 20px;
+            max-width: 90%;
+            box-sizing: border-box;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page" id="page1">
+        <div class="confetti" id="confetti"></div>
+        <div class="birthday-text">Happy Birthday Moody Veere!</div>
+        
+        <!-- Happy Birthday animation -->
+        <div class="birthday-animation">
+            <div class="tenor-gif-embed" data-postid="2252812409922865204" data-share-method="host" data-aspect-ratio="1.08261" data-width="100%">
+                <a href="https://tenor.com/view/happy-birthday-gif-2252812409922865204">Happy Birthday Sticker</a> from 
+                <a href="https://tenor.com/search/happy+birthday-stickers">Happy Birthday Stickers</a>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+
+        <!-- Click Here Button -->
+        <button class="circle-button" onclick="nextPage()">Click Here</button>
+    </div>
+
+    <div class="page next-page" id="page2">
+        <div class="confetti" id="confetti2"></div>
+
+        <!-- Birthday message text with reduced size -->
+        <div class="birthday-text-second-page">
+            To my dearest Moody Veera,<br><br>
+You’ve been more than just a brother to me—you’ve been a guide, a protector, and a constant source of wisdom and strength. From the very beginning, you’ve shown me what it means to be selfless, kind, and strong. I look up to you in more ways than I can ever say.<br><br>
+Your presence in my life is a gift I treasure deeply. You’ve always been there to cheer me on, to pick me up when I’ve stumbled, and to remind me of my worth. Your advice and support have shaped the person I am today, and for that, I am forever grateful.<br><br>
+On your special day, I want you to know just how much you mean to me. You’re not only my brother but also my role model and one of my greatest blessings.<br><br>
+Happy Birthday, Veere! Let’s celebrate you today—your strength, your kindness, and everything that makes you the amazing person you are. May this year bring you endless joy, good health, and every happiness you deserve.<br><br>
+With love and admiration always.
+        </div>
+
+        <!-- Love You Animation -->
+        <div class="birthday-animation">
+            <div class="tenor-gif-embed" data-postid="16167379" data-share-method="host" data-aspect-ratio="1.23552" data-width="100%">
+                <a href="https://tenor.com/view/love-ilu-cat-hearts-mochi-gif-16167379">Love Ilu Sticker</a> from 
+                <a href="https://tenor.com/search/love-stickers">Love Stickers</a>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'flex';
+        }
+
+        // Confetti animation logic
+        const confettiContainer1 = document.getElementById('confetti');
+        const confettiContainer2 = document.getElementById('confetti2');
+        const colors = ['#a6ee80', '#ee7a77', '#92e6df', '#f6d56c']; // Updated confetti colors
+
+        function createConfettiPiece(container) {
+            const confetti = document.createElement('div');
+            const size = Math.random() * 10 + 5;
+            confetti.style.position = 'absolute';
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = `${Math.random() * 100}%`; // Random width position
+            confetti.style.top = `-${size}px`; // Start from above the screen
+
+            // Apply fall animation
+            confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+            confetti.style.zIndex = 10; // Ensure confetti is above content
+
+            container.appendChild(confetti);
+
+            // Remove confetti after animation ends
+            confetti.addEventListener('animationend', () => {
+                confetti.remove();
+            });
+        }
+
+        function startConfetti() {
+            setInterval(() => createConfettiPiece(confettiContainer1), 50); // Page 1 confetti speed
+            setInterval(() => createConfettiPiece(confettiContainer2), 150);  // Page 2 slower confetti speed
+        }
+
+        // Start confetti animation when the page is visible
+        startConfetti();
+    </script>
+</body>
+</html>
